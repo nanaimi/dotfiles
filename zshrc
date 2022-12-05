@@ -75,7 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx ripgrep)
+plugins=(git macos ripgrep)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,20 +111,29 @@ alias star-wars="telnet towel.blinkenlights.nl"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/nasibnaimi/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/nasib/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/nasibnaimi/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/nasibnaimi/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/nasib/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/nasib/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/nasibnaimi/anaconda3/bin:$PATH"
+        export PATH="/Users/nasib/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/anaconda3/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+source ~/.nvm/nvm.sh

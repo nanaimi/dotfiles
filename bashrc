@@ -4,3 +4,4 @@
 # aliases
 alias ll="ls -alh"
 alias anaconda='source /usr/pack/anaconda-3-fg/anaconda3_env.sh'
+
