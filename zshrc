@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="ls -alh"
 alias cl="clear"
+alias cafe="caffeinate -d -t 1800"
 
 alias star-wars="telnet towel.blinkenlights.nl"
 
