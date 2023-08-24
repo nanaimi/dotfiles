@@ -17,4 +17,5 @@ ln -sf ${BASEDIR}/p10k ~/.p10k.zsh
 # git
 #ln -s ${BASEDIR}/gitconfig ~/.gitconfig
 
-
+#tmux 
+ln -sf ${BASEDIR}/tmux_conf ~/.tmux.conf
