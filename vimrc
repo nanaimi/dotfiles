@@ -81,4 +81,10 @@ set scrolloff=4
 " Don't redraw while executing macros (performance config)
 set lazyredraw
 
-"call plug#begin('~/.vim/plugged')
+" Enable vim-plug plugin management
+call plug#begin('~/.vim/plugged')
+
+Plug 'preservim/nerdtree'
+Plug 'lervag/vimtex'
+
+call plug#end()

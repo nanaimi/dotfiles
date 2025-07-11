@@ -104,13 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -alh"
-alias cl="clear"
-alias cafe="echo drinking espresso && caffeinate -d -t 1800 &"
-tat(){tmux new -s $1}
-tkill(){tmux kill-session $1}
 
-alias star-wars="telnet towel.blinkenlights.nl"
+# Source common aliases
+[ -f "$HOME/dotfiles/aliases" ] && source "$HOME/dotfiles/aliases"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

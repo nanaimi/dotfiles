@@ -23,6 +23,23 @@ backup_and_link "$BASEDIR/vimrc" "$HOME/.vimrc"
 # Uncomment if you want to symlink the vim directory
 # backup_and_link "$BASEDIR/vim/" "$HOME/.vim"
 
+# Install vim-plug for vim if not already installed
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
+  echo "Installing vim-plug plugin manager for vim..."
+  curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+else
+  echo "vim-plug already installed."
+fi
+
+# Automatically install vim plugins
+if command -v vim >/dev/null 2>&1; then
+  echo "Installing vim plugins with PlugInstall..."
+  vim +PlugInstall +qall < /dev/tty
+else
+  echo "vim is not installed; skipping plugin installation."
+fi
+
 # zsh
 backup_and_link "$BASEDIR/zshrc" "$HOME/.zshrc"
 backup_and_link "$BASEDIR/p10k" "$HOME/.p10k.zsh"

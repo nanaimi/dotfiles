@@ -1,0 +1,8 @@
+# Common shell aliases
+alias ll="ls -alh"
+alias cl="clear"
+alias cafe="echo drinking espresso && caffeinate -d -t 1800 &"
+alias star-wars="telnet towel.blinkenlights.nl"
+
+tat(){tmux new -s $1;}
+tkill(){tmux kill-session $1;} 
