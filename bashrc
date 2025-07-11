@@ -3,5 +3,9 @@
 
 # aliases
 alias ll="ls -alh"
-alias anaconda='source /usr/pack/anaconda-3-fg/anaconda3_env.sh'
 alias cafe="caffeinate -d 1800"
+
+# git aliases
+alias gf="git fetch"
+alias gcb="git checkout -b"
+alias gp="git pull"

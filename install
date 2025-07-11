@@ -1,21 +1,35 @@
 #!/usr/bin/env bash
+set -e
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-#bash
-ln -sf ${BASEDIR}/bashrc ~/.bashrc
-ln -sf ${BASEDIR}/profile ~/.profile
-ln -sf ${BASEDIR}/bash_profile ~/.bash_profile
+backup_and_link() {
+  src="$1"
+  dest="$2"
+  if [ -e "$dest" ] || [ -L "$dest" ]; then
+    echo "Backing up $dest to $dest.bak"
+    mv "$dest" "$dest.bak" || { echo "Failed to backup $dest"; exit 1; }
+  fi
+  echo "Symlinking $src to $dest"
+  ln -sf "$src" "$dest" || { echo "Failed to symlink $src to $dest"; exit 1; }
+}
+
+# bash
+backup_and_link "$BASEDIR/bashrc" "$HOME/.bashrc"
+backup_and_link "$BASEDIR/profile" "$HOME/.profile"
+backup_and_link "$BASEDIR/bash_profile" "$HOME/.bash_profile"
 
 # vim
-ln -sf ${BASEDIR}/vimrc ~/.vimrc
-#ln -s ${BASEDIR}/vim/ ~/.vim
+backup_and_link "$BASEDIR/vimrc" "$HOME/.vimrc"
+# Uncomment if you want to symlink the vim directory
+# backup_and_link "$BASEDIR/vim/" "$HOME/.vim"
 
 # zsh
-ln -sf ${BASEDIR}/zshrc ~/.zshrc
-ln -sf ${BASEDIR}/p10k ~/.p10k.zsh
+backup_and_link "$BASEDIR/zshrc" "$HOME/.zshrc"
+backup_and_link "$BASEDIR/p10k" "$HOME/.p10k.zsh"
 
 # git
-#ln -s ${BASEDIR}/gitconfig ~/.gitconfig
+# Uncomment if you want to symlink gitconfig
+# backup_and_link "$BASEDIR/gitconfig" "$HOME/.gitconfig"
 
-#tmux 
-ln -sf ${BASEDIR}/tmux_conf ~/.tmux.conf
+# tmux
+backup_and_link "$BASEDIR/tmux_conf" "$HOME/.tmux.conf"
